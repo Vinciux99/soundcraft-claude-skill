@@ -1,0 +1,60 @@
+{
+  "id": "soundcraft",
+  "name": "SoundCraft",
+  "tagline": "Pro Tools-style digital audio workstation",
+  "upstream": "storytold/soundcraft",
+  "port": 7801,
+  "docsPort": 7801,
+  "launch": {
+    "args": [
+      "--control",
+      "{port}"
+    ]
+  },
+  "mcp": {
+    "server": "soundcraft",
+    "live": [
+      "mcp",
+      "--connect",
+      "{port}"
+    ],
+    "headless": [
+      "mcp"
+    ],
+    "default": "live"
+  },
+  "windows": {
+    "dirs": [
+      "{ProgramFiles}\\SoundCraft",
+      "{LocalAppData}\\Programs\\SoundCraft"
+    ],
+    "app": "soundcraft.exe",
+    "cli": "soundcraft-cli.exe"
+  },
+  "macos": {
+    "bundles": [
+      "/Applications/SoundCraft.app",
+      "{home}/Applications/SoundCraft.app"
+    ],
+    "appBinary": "Contents/MacOS/SoundCraft",
+    "cliPaths": [
+      "{home}/.artcraft/bin/soundcraft-cli",
+      "/usr/local/bin/soundcraft-cli",
+      "/opt/homebrew/bin/soundcraft-cli",
+      "{bundle}/Contents/MacOS/soundcraft-cli"
+    ],
+    "cliReleaseAsset": "soundcraft-cli-{version}-macos-universal.zip",
+    "cliBinaryInZip": "soundcraft-cli"
+  },
+  "prepare": {
+    "dirs": []
+  },
+  "auth": {
+    "type": "none",
+    "notes": "Loopback only, no token."
+  },
+  "verified": {
+    "windows": true,
+    "macos": false
+  }
+}
